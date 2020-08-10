@@ -1,0 +1,768 @@
+{
+	"info": {
+		"_postman_id": "3ef0991b-a64e-46e2-b7ea-13e6bafeb72a",
+		"name": "FPOS-API-Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "E3 Create Transaction API  :  201 Success with 5 UPCs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ca35582b-ad39-4c22-bd7e-faf6e907cbaf",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"pm.globals.set(\"transactionId\", reponse.transactionId);",
+							"",
+							"pm.test(\"Response is ok = 201 All items successfully added to the new transaction.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 10000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
+							"});",
+							"",
+							"/*pm.test(\"Returns transactionId with correct format \", function () {",
+							"    let jsonData = pm.response.json();",
+							"    pm.expect(jsonData.transactionId).to.match(/^[a-z0-9]{25}$/);",
+							"});*/",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                { \"id\": \"892515002576\" },\n                { \"id\": \"000005105007\" },\n                { \"id\": \"000000021050\" },\n                { \"id\": \"000000031059\" },\n                { \"id\": \"000004400295\" }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Delate Transaction API :  204 Success - Using same 4PK (5 UPCs)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55f7b57b-8444-410b-b1e0-8f6353f33c8c",
+						"exec": [
+							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1d4460d2-2c58-46d1-8034-0bd5cdd5aab1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API  :  201 Success with 5 SKUs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f60a5d9d-9758-4092-bb10-dbedc2c539b7",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"pm.globals.set(\"transactionId\", reponse.transactionId);",
+							"",
+							"pm.test(\"Response is ok = 201 All items successfully added to the new transaction.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 10000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
+							"});",
+							"",
+							"/*pm.test(\"Returns transactionId with correct format \", function () {",
+							"    let jsonData = pm.response.json();",
+							"    pm.expect(jsonData.transactionId).to.match(/^[a-z0-9]{25}$/);",
+							"});*/",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                { \"id\": \"1008691\", \"type\":\"sku\" },\n                { \"id\": \"4616075\", \"type\":\"sku\" },\n                { \"id\": \"4616048\", \"type\":\"sku\" },\n                { \"id\": \"4616057\", \"type\":\"sku\" },\n                { \"id\": \"6098086\", \"type\":\"sku\" }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Delate Transaction API :  204 Success - Using same 4PK (5 SKUs)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b600655-3454-47ff-9432-83e784562bdd",
+						"exec": [
+							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b9e48646-46d8-4610-bbc1-4fdd3174f067",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API :  201 Success with 10 UPCs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8b0b6fb-0c23-468e-92da-db5cd12cac38",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"pm.globals.set(\"transactionId\", reponse.transactionId);",
+							"",
+							"pm.test(\"Response is ok = 201 All items successfully added to the new transaction.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 15000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(15000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                { \"id\": \"892515002576\" },\n                { \"id\": \"000005105007\" },\n                { \"id\": \"000000021050\" },\n                { \"id\": \"000000031059\" },\n                { \"id\": \"000000143820\" },\n                { \"id\": \"000001401165\" },\n                { \"id\": \"000001690262\" },\n                { \"id\": \"000003651995\" },\n                { \"id\": \"000003751558\" },\n                { \"id\": \"000004400295\" }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Delate Transaction API :  204 Success - Using same 4PK (10 UPCs)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46f76cfd-4a47-4fc8-918a-08b53ed35bc5",
+						"exec": [
+							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "833f0bbe-97db-4d06-acb3-29d75a70248f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API :  201 Success with 10 SKUs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31f2e793-313c-4651-94d4-2c0eafd09490",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"pm.globals.set(\"transactionId\", reponse.transactionId);",
+							"",
+							"pm.test(\"Response is ok = 201 All items successfully added to the new transaction.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 15000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(15000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                { \"id\": \"1008691\", \"type\":\"sku\" },\n                { \"id\": \"4616075\", \"type\":\"sku\" },\n                { \"id\": \"4616048\", \"type\":\"sku\" },\n                { \"id\": \"4616057\", \"type\":\"sku\" },\n                { \"id\": \"6098086\", \"type\":\"sku\" },\n                { \"id\": \"5692177\", \"type\":\"sku\" },\n                { \"id\": \"5147119\", \"type\":\"sku\" },\n                { \"id\": \"4616066\", \"type\":\"sku\" },\n                { \"id\": \"6088059\", \"type\":\"sku\" },\n                { \"id\": \"6098086\", \"type\":\"sku\" }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Delate Transaction API :  204 Success - Using same 4PK (10 SKUs)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5a8cc5e-5d7a-42bf-8f2c-b286fad4b868",
+						"exec": [
+							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5454b68c-3ab9-4268-ab58-05c7355b9c19",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API :  201 Success = 1SKU",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f8b70c9f-83f5-4f11-b441-80da26be678e",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"pm.globals.set(\"transactionId\", reponse.transactionId);",
+							"pm.globals.set(\"totalprice\", reponse.total);",
+							"console.log(reponse.transactionId);",
+							"",
+							"pm.test(\"Response is ok = 201 All items successfully added to the new transaction.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"var schema = {",
+							"\"type\": \"object\", ",
+							"\"properties\": {",
+							"    \"transactionId\": { \"type\": \"string\" }, ",
+							"    \"items\": {",
+							"        \"type\": \"array\", ",
+							"        \"items\": {",
+							"        \"type\": \"object\", ",
+							"        \"properties\": {",
+							"            \"lineId\": { \"type\": \"integer\" },",
+							"            \"price\": { \"type\": \"number\" } ",
+							"            },",
+							"            \"required\": [ \"lineId\", \"price\" ] ",
+							"            }",
+							"        },",
+							"        \"subtotal\": { \"type\": \"number\" }, ",
+							"        \"taxes\": { \"type\": \"number\" }, ",
+							"        \"total\": { \"type\": \"number\" }",
+							"},",
+							"\"required\": [ \"transactionId\", \"items\", \"subtotal\", \"taxes\", \"total\" ]",
+							"};",
+							"",
+							"",
+							"pm.test('E3 Create Transaction API success(201)response - Schema is valid', function() {",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 3000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                { \"id\": \"1008691\", \"type\":\"sku\" }\n       ]\n}\n//892515002576",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Tender API :  201 Tender(s) successfully added",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "381eec30-53e0-4a19-9bb9-24549dcd620a",
+						"exec": [
+							"pm.test(\"Response is ok = 201 Tender(s) successfully added.\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							"console.log(pm.globals.transactionId);",
+							"console.log(pm.globals.totalprice);",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tenders\": [\n    {\n      \"tenderType\": \"AMEX\",\n      \"entryMethod\": \"CARDONFILE\",\n      \"tenderAuthKey\": \"2220607460159696\",\n      \"authorizedAmount\": {{totalprice}},\n      \"authorizationCode\": \"OK4134\",\n      \"isoResponseCode\": \"00\",\n      \"accountNumber\": \"8379820115521004\",\n      \"expiryDate\": \"06/2023\",\n      \"firstName\": \"Prasad\",\n      \"lastName\": \"YERICHERLA\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/tender"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Tender API :  400 Error Bad Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac5c8c07-fa0f-463d-98a5-555fdc6cccef",
+						"exec": [
+							"pm.test(\"Response is ok = 400 Request is malformed or otherwise unserviceable.\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tenders\": [\n    {\n      \"tenderType\": \"AMEX\",\n      \"entryMethod\": \"CARDONFILE\",\n      \"tenderAuthKey\": \"2220607460159696\",\n      \"authorizedAmount\": 14.06,\n      \"authorizationCode\": \"OK4134\",\n      \"isoResponseCode\": \"00\",\n      \"accountNumber\": \"8379820115521004\",\n      \"expiryDate\": \"06/2023\",\n      \"firstName\": \"Prasad\",\n      \"lastName\": \"YERICHERLA\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/tender"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Tender API :  404 Error (4PK Not Found )",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "abf4737c-91d5-4d0d-88e1-9a4770e4bd38",
+						"exec": [
+							"pm.test(\"Response is ok = 404 (4PK Not Found ) No transaction with a matching four-part key was found.\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 4000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					},
+					{
+						"key": "X-E3Retail-PosApi-TransactionID",
+						"type": "text",
+						"value": "{{transactionId}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tenders\": [\n    {\n      \"tenderType\": \"AMEX\",\n      \"entryMethod\": \"CARDONFILE\",\n      \"tenderAuthKey\": \"2220607460159696\",\n      \"authorizedAmount\": 14.06,\n      \"authorizationCode\": \"OK4134\",\n      \"isoResponseCode\": \"00\",\n      \"accountNumber\": \"8379820115521004\",\n      \"expiryDate\": \"06/2023\",\n      \"firstName\": \"Prasad\",\n      \"lastName\": \"YERICHERLA\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/tender"
+			},
+			"response": []
+		},
+		{
+			"name": "Basket Creation:  Transaction Failed and Redirect to Basket Creation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f072704c-8b2e-4735-b80f-1423f7aacb2d",
+						"exec": [
+							"const reponse = pm.response.json();",
+							"console.log(reponse.BasketID);",
+							"pm.globals.set(\"BasketID\", reponse.BasketID);",
+							"",
+							"pm.test(\"Response is ok = 201 Basket Creation:  Transaction Failed and Redirect to Basket Creation\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "ClientApplicationId",
+						"type": "text",
+						"value": "CBD"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"BasketType\": \"EmployeeApplication\",\n  \"ContextData\": {\n    \"Store\": 1982,\n    \"AssociateId\": \"1333775\",\n    \"IsPurchased\": false\n  },\n  \"ItemData\": [\n    {\n      \"ParentItem\": {\n        \"ItemID\": \"1008691\",\n        \"ItemLineNumber\": 1\n      }\n    }\n  ],\n  \"Customers\": [\n    {\n      \"Firstname\": \"PRASAD\",\n      \"Lastname\": \"YERICHERLA\",\n      \"PrimaryPhone\": \"4794186511\",\n      \"HomeAddress\": {\n        \"AddressLine1\": \"7350 Gallagher dr\",\n        \"City\": \"MINNEAPOLIS\",\n        \"Country\": \"US\",\n        \"PostalCode\": \"55435\",\n        \"Territory\": \"MN\"\n      },\n      \"Email\": \"a1333775@bestbuy.com\",\n      \"PartyId\": \"4165027537\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://ptw01smrap01c.na.bestbuy.com/UniversalBasketAPI/api/ub/create"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API : 503 Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97e93cb5-8598-410d-b68d-6da1abff92f3",
+						"exec": [
+							"pm.test(\"Response Error = 503 Request cannot be processed at this time (internal error/unexpected fault).\", function () {",
+							"    pm.response.to.have.status(503);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1990,\n     \"operatorId\": 1503932,\n     \"customerId\": \"1234A6789B\",\n     \"items\": [\n                {\n                   \"id\": \"039953501883\",\n                   \"type\": \"upc\"\n               }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		},
+		{
+			"name": "E3 Create Transaction API : 471 Error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3dcc96c-4063-48a9-8947-c1aa6131714b",
+						"exec": [
+							"pm.test(\"Response Error = 471 Request successfully processed but the transaction was not created.\", function () {",
+							"    pm.response.to.have.status(471);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-E3Retail-PosApi-ClientID",
+						"type": "text",
+						"value": "ConPOS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"store\": 1982,\n     \"operatorId\": 15,\n     \"customerId\": \"01015329394165027537\",\n     \"customerEmail\": \"a1333775@bestbuy.com\",\n     \"items\": [\n                {\n                   \"id\": \"1008691\"\n               }\n       ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{url}}/transaction"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

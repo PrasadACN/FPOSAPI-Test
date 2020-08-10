@@ -1,0 +1,14 @@
+{
+  "name": "FPOS-API-AUTOMATION",
+  "version": "1.0.0",
+  "description": "\"FPOS-API-AUTOMATION\"",
+  "directories":{
+    "test": "tests"
+  "scripts": {
+    "api-tests": "newman run FPOS-API-Automation.postman_collection.json -e QA.postman_environment.json"
+  },
+  "author": "Prasad Yericherla",
+  "dependencies": {
+    "newman": "^5.1.2"
+  }
+}
