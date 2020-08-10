@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "run-api-tests": "newman run FPOS-API-Automation.postman_collection.json -e QA.postman_environment.json"
+    "run-api-tests": "newman run FPOS-API-Automation.postman_collection.json -e QA.postman_environment.json --reporters cli,junit --reporters-junit-export FPOS-API.xml"
   },
   "author": "Prasad Yericherla",
   "dependencies": {
