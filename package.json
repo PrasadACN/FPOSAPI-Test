@@ -9,5 +9,7 @@
     "run-api-tests": "newman run FPOS-API-Automation.postman_collection.json -e QA.postman_environment.json --reporters cli,junit --reporter-junit-export FPOS-API.xml"
   },
   "author": "Prasad Yericherla",
-  "dependencies": {}
+  "dependencies": {
+    "newman": "^5.1.2"
+  }
 }
