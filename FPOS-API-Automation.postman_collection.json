@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3ef0991b-a64e-46e2-b7ea-13e6bafeb72a",
+		"_postman_id": "6765a7a1-a2e0-466b-8f4d-c275d9fe8bf3",
 		"name": "FPOS-API-Automation",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ca35582b-ad39-4c22-bd7e-faf6e907cbaf",
+						"id": "707351ce-60e6-4616-b651-83e9bc7c1008",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"pm.globals.set(\"transactionId\", reponse.transactionId);",
@@ -24,10 +24,7 @@
 							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
 							"});",
 							"",
-							"/*pm.test(\"Returns transactionId with correct format \", function () {",
-							"    let jsonData = pm.response.json();",
-							"    pm.expect(jsonData.transactionId).to.match(/^[a-z0-9]{25}$/);",
-							"});*/",
+							"",
 							"",
 							""
 						],
@@ -42,6 +39,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -63,7 +65,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "55f7b57b-8444-410b-b1e0-8f6353f33c8c",
+						"id": "1a478e13-5303-4bbc-b0c9-5f269ffe1a45",
 						"exec": [
 							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
 							"    pm.response.to.have.status(204);",
@@ -80,7 +82,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1d4460d2-2c58-46d1-8034-0bd5cdd5aab1",
+						"id": "9df9e6ef-bae3-4ccd-ab91-a201ac265739",
 						"exec": [
 							""
 						],
@@ -100,6 +102,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"url": "{{url}}/transaction"
@@ -112,7 +119,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f60a5d9d-9758-4092-bb10-dbedc2c539b7",
+						"id": "728dbd72-3f27-4c1f-b266-caa0298844ca",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"pm.globals.set(\"transactionId\", reponse.transactionId);",
@@ -125,10 +132,7 @@
 							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
 							"});",
 							"",
-							"/*pm.test(\"Returns transactionId with correct format \", function () {",
-							"    let jsonData = pm.response.json();",
-							"    pm.expect(jsonData.transactionId).to.match(/^[a-z0-9]{25}$/);",
-							"});*/",
+							"",
 							"",
 							""
 						],
@@ -143,6 +147,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -164,7 +173,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5b600655-3454-47ff-9432-83e784562bdd",
+						"id": "df43933f-31e9-4d52-abb8-f78bd82e43fe",
 						"exec": [
 							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
 							"    pm.response.to.have.status(204);",
@@ -181,7 +190,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b9e48646-46d8-4610-bbc1-4fdd3174f067",
+						"id": "7875a5c7-4784-4a7b-a216-771b2548f9c3",
 						"exec": [
 							""
 						],
@@ -201,6 +210,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"url": "{{url}}/transaction"
@@ -213,7 +227,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f8b0b6fb-0c23-468e-92da-db5cd12cac38",
+						"id": "9953f34a-7874-4648-8be2-82671308ceec",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"pm.globals.set(\"transactionId\", reponse.transactionId);",
@@ -222,8 +236,8 @@
 							"    pm.response.to.have.status(201);",
 							"});",
 							"",
-							"pm.test(\"Response time is less than 15000ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(15000);",
+							"pm.test(\"Response time is less than 16000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(16000);",
 							"});",
 							"",
 							""
@@ -239,6 +253,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -260,7 +279,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "46f76cfd-4a47-4fc8-918a-08b53ed35bc5",
+						"id": "eea196de-789d-4844-bb33-4d709ea46791",
 						"exec": [
 							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
 							"    pm.response.to.have.status(204);",
@@ -277,7 +296,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "833f0bbe-97db-4d06-acb3-29d75a70248f",
+						"id": "ebc6ab80-5d13-4e02-b753-37eae089026f",
 						"exec": [
 							""
 						],
@@ -297,6 +316,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"url": "{{url}}/transaction"
@@ -309,7 +333,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "31f2e793-313c-4651-94d4-2c0eafd09490",
+						"id": "3fa7bbe0-f212-49ae-b1de-65de80c89511",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"pm.globals.set(\"transactionId\", reponse.transactionId);",
@@ -318,8 +342,8 @@
 							"    pm.response.to.have.status(201);",
 							"});",
 							"",
-							"pm.test(\"Response time is less than 15000ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(15000);",
+							"pm.test(\"Response time is less than 16000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(16000);",
 							"});",
 							"",
 							""
@@ -335,6 +359,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -356,7 +385,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a5a8cc5e-5d7a-42bf-8f2c-b286fad4b868",
+						"id": "006aba0c-8571-4a78-972a-73a5c90880a4",
 						"exec": [
 							"pm.test(\"Response is ok = 204 Transaction was successfully canceled.\", function () {",
 							"    pm.response.to.have.status(204);",
@@ -373,7 +402,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "5454b68c-3ab9-4268-ab58-05c7355b9c19",
+						"id": "310d5a22-9cc8-4fcf-9f15-3f3e943545cc",
 						"exec": [
 							""
 						],
@@ -393,6 +422,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"url": "{{url}}/transaction"
@@ -405,7 +439,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f8b70c9f-83f5-4f11-b441-80da26be678e",
+						"id": "13276c33-9e2f-48e8-b6d8-2e473b933493",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"pm.globals.set(\"transactionId\", reponse.transactionId);",
@@ -461,6 +495,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -482,7 +521,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "381eec30-53e0-4a19-9bb9-24549dcd620a",
+						"id": "23ceb6b4-8438-4ad6-97e5-5195ab204b9f",
 						"exec": [
 							"pm.test(\"Response is ok = 201 Tender(s) successfully added.\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -492,8 +531,6 @@
 							"    pm.expect(pm.response.responseTime).to.be.below(4000);",
 							"});",
 							"",
-							"console.log(pm.globals.transactionId);",
-							"console.log(pm.globals.totalprice);",
 							"",
 							"",
 							""
@@ -514,6 +551,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -535,7 +577,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ac5c8c07-fa0f-463d-98a5-555fdc6cccef",
+						"id": "a46dded4-a92b-45c7-b5fe-93ea5d63fa3c",
 						"exec": [
 							"pm.test(\"Response is ok = 400 Request is malformed or otherwise unserviceable.\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -560,10 +602,9 @@
 						"value": "ConPOS"
 					},
 					{
-						"key": "",
+						"key": "X-Api-Key",
 						"type": "text",
-						"value": "",
-						"disabled": true
+						"value": "{{apikey}}"
 					}
 				],
 				"body": {
@@ -585,7 +626,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "abf4737c-91d5-4d0d-88e1-9a4770e4bd38",
+						"id": "2e204e92-8252-48e5-9c51-0cfaed57b6d8",
 						"exec": [
 							"pm.test(\"Response is ok = 404 (4PK Not Found ) No transaction with a matching four-part key was found.\", function () {",
 							"    pm.response.to.have.status(404);",
@@ -613,6 +654,11 @@
 						"key": "X-E3Retail-PosApi-TransactionID",
 						"type": "text",
 						"value": "{{transactionId}}"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -634,7 +680,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f072704c-8b2e-4735-b80f-1423f7aacb2d",
+						"id": "1d4b81c7-fbad-49d0-9ccc-28e4385a84d3",
 						"exec": [
 							"const reponse = pm.response.json();",
 							"console.log(reponse.BasketID);",
@@ -666,6 +712,11 @@
 						"key": "ClientApplicationId",
 						"type": "text",
 						"value": "CBD"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -687,7 +738,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "97e93cb5-8598-410d-b68d-6da1abff92f3",
+						"id": "dd9a7126-412e-4909-a19d-e184aaf2c2d3",
 						"exec": [
 							"pm.test(\"Response Error = 503 Request cannot be processed at this time (internal error/unexpected fault).\", function () {",
 							"    pm.response.to.have.status(503);",
@@ -708,6 +759,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -729,7 +785,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d3dcc96c-4063-48a9-8947-c1aa6131714b",
+						"id": "bc918bd6-16da-4e11-972e-30348f15b7da",
 						"exec": [
 							"pm.test(\"Response Error = 471 Request successfully processed but the transaction was not created.\", function () {",
 							"    pm.response.to.have.status(471);",
@@ -748,6 +804,11 @@
 						"key": "X-E3Retail-PosApi-ClientID",
 						"type": "text",
 						"value": "ConPOS"
+					},
+					{
+						"key": "X-Api-Key",
+						"value": "{{apikey}}",
+						"type": "text"
 					}
 				],
 				"body": {

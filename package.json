@@ -2,14 +2,12 @@
   "name": "FPOS-API-AUTOMATION",
   "version": "1.0.0",
   "description": "\"FPOS-API-AUTOMATION\"",
-  "directories":{
+  "directories": {
     "test": "tests"
   },
   "scripts": {
     "run-api-tests": "newman run FPOS-API-Automation.postman_collection.json -e QA.postman_environment.json --reporters cli,junit --reporter-junit-export FPOS-API.xml"
   },
   "author": "Prasad Yericherla",
-  "dependencies": {
-    "newman": "^5.1.2"
-  }
+  "dependencies": {}
 }
